@@ -1,7 +1,6 @@
-```zhs 
-mkfifo FIFO # create 
+# gcc options 
 
-echo msg to fifo > FIFO #st teminal now waits for second to recive msg 
+-Wall: It ensures your code is as clean and bug-free as possible with many useful warnings.
 
-cat FIFO # both terminals are now ready again
-```
+-pedantic: It ensures that the code adheres strictly to the language standard and highlights areas
+	 where your code might diverge from what is officially allowed

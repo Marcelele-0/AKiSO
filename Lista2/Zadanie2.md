@@ -1,397 +1,73 @@
+# manual 
 ```zhs
-ps -eo pid,ppid,start,pri,ni,%mem,%cpu,cmd
+man ps
 ```
-    PID    PPID  STARTED PRI  NI %MEM %CPU CMD
-      1       0 14:17:17  19   0  0.0  0.1 /sbin/init
-      2       0 14:17:17  19   0  0.0  0.0 [kthreadd]
-      3       2 14:17:17  19   0  0.0  0.0 [pool_workqueue_release]
-      4       2 14:17:17  39 -20  0.0  0.0 [kworker/R-rcu_gp]
-      5       2 14:17:17  39 -20  0.0  0.0 [kworker/R-sync_wq]
-      6       2 14:17:17  39 -20  0.0  0.0 [kworker/R-slub_flushwq]
-      7       2 14:17:17  39 -20  0.0  0.0 [kworker/R-netns]
-      8       2 14:17:17  19   0  0.0  0.0 [kworker/0:0-events]
-     10       2 14:17:17  39 -20  0.0  0.0 [kworker/0:0H-events_highpri]
-     13       2 14:17:17  39 -20  0.0  0.0 [kworker/R-mm_percpu_wq]
-     14       2 14:17:17  19   0  0.0  0.0 [rcu_tasks_kthread]
-     15       2 14:17:17  19   0  0.0  0.0 [rcu_tasks_rude_kthread]
-     16       2 14:17:17  19   0  0.0  0.0 [rcu_tasks_trace_kthread]
-     17       2 14:17:17  19   0  0.0  0.0 [ksoftirqd/0]
-     18       2 14:17:17  41   -  0.0  0.0 [rcu_preempt]
-     19       2 14:17:17  41   -  0.0  0.0 [rcub/0]
-     20       2 14:17:17  19   0  0.0  0.0 [rcu_exp_par_gp_kthread_worker/0]
-     21       2 14:17:17  19   0  0.0  0.0 [rcu_exp_gp_kthread_worker]
-     22       2 14:17:17 139   -  0.0  0.0 [migration/0]
-     23       2 14:17:17  90   -  0.0  0.0 [idle_inject/0]
-     24       2 14:17:17  19   0  0.0  0.0 [cpuhp/0]
-     25       2 14:17:17  19   0  0.0  0.0 [cpuhp/2]
-     26       2 14:17:17  90   -  0.0  0.0 [idle_inject/2]
-     27       2 14:17:17 139   -  0.0  0.0 [migration/2]
-     28       2 14:17:17  19   0  0.0  0.0 [ksoftirqd/2]
-     29       2 14:17:17  19   0  0.0  0.0 [kworker/2:0-mm_percpu_wq]
-     30       2 14:17:17  39 -20  0.0  0.0 [kworker/2:0H-events_highpri]
-     31       2 14:17:17  19   0  0.0  0.0 [cpuhp/4]
-     32       2 14:17:17  90   -  0.0  0.0 [idle_inject/4]
-     33       2 14:17:17 139   -  0.0  0.0 [migration/4]
-     34       2 14:17:17  19   0  0.0  0.0 [ksoftirqd/4]
-     36       2 14:17:17  39 -20  0.0  0.0 [kworker/4:0H-events_highpri]
-     37       2 14:17:17  19   0  0.0  0.0 [cpuhp/6]
-     38       2 14:17:17  90   -  0.0  0.0 [idle_inject/6]
-     39       2 14:17:17 139   -  0.0  0.0 [migration/6]
-     40       2 14:17:17  19   0  0.0  0.0 [ksoftirqd/6]
-     42       2 14:17:17  39 -20  0.0  0.0 [kworker/6:0H-events_highpri]
-     43       2 14:17:17  19   0  0.0  0.0 [cpuhp/1]
-     44       2 14:17:17  90   -  0.0  0.0 [idle_inject/1]
-     45       2 14:17:17 139   -  0.0  0.0 [migration/1]
-     46       2 14:17:17  19   0  0.0  0.0 [ksoftirqd/1]
-     48       2 14:17:17  39 -20  0.0  0.0 [kworker/1:0H-events_highpri]
-     49       2 14:17:17  19   0  0.0  0.0 [cpuhp/3]
-     50       2 14:17:17  90   -  0.0  0.0 [idle_inject/3]
-     51       2 14:17:17 139   -  0.0  0.0 [migration/3]
-     52       2 14:17:17  19   0  0.0  0.0 [ksoftirqd/3]
-     53       2 14:17:17  19   0  0.0  0.0 [kworker/3:0-mm_percpu_wq]
-     54       2 14:17:17  39 -20  0.0  0.0 [kworker/3:0H-events_highpri]
-     55       2 14:17:17  19   0  0.0  0.0 [cpuhp/5]
-     56       2 14:17:17  90   -  0.0  0.0 [idle_inject/5]
-     57       2 14:17:17 139   -  0.0  0.0 [migration/5]
-     58       2 14:17:17  19   0  0.0  0.0 [ksoftirqd/5]
-     60       2 14:17:17  39 -20  0.0  0.0 [kworker/5:0H-events_highpri]
-     61       2 14:17:17  19   0  0.0  0.0 [cpuhp/7]
-     62       2 14:17:17  90   -  0.0  0.0 [idle_inject/7]
-     63       2 14:17:17 139   -  0.0  0.0 [migration/7]
-     64       2 14:17:17  19   0  0.0  0.0 [ksoftirqd/7]
-     65       2 14:17:17  19   0  0.0  0.0 [kworker/7:0-mm_percpu_wq]
-     66       2 14:17:17  39 -20  0.0  0.0 [kworker/7:0H-events_highpri]
-     67       2 14:17:17  19   0  0.0  0.0 [kdevtmpfs]
-     68       2 14:17:17  39 -20  0.0  0.0 [kworker/R-inet_frag_wq]
-     69       2 14:17:17  19   0  0.0  0.0 [kauditd]
-     70       2 14:17:17  19   0  0.0  0.0 [khungtaskd]
-     71       2 14:17:17  19   0  0.0  0.0 [kworker/u32:2-flush-259:0]
-     72       2 14:17:17  19   0  0.0  0.0 [oom_reaper]
-     73       2 14:17:17  39 -20  0.0  0.0 [kworker/R-writeback]
-     74       2 14:17:17  19   0  0.0  0.0 [kcompactd0]
-     75       2 14:17:17  14   5  0.0  0.0 [ksmd]
-     76       2 14:17:17   0  19  0.0  0.0 [khugepaged]
-     77       2 14:17:17  39 -20  0.0  0.0 [kworker/R-kintegrityd]
-     78       2 14:17:17  39 -20  0.0  0.0 [kworker/R-kblockd]
-     79       2 14:17:17  39 -20  0.0  0.0 [kworker/R-blkcg_punt_bio]
-     80       2 14:17:17  90   -  0.0  0.0 [irq/9-acpi]
-     81       2 14:17:17  19   0  0.0  0.0 [kworker/4:1-mm_percpu_wq]
-     82       2 14:17:17  19   0  0.0  0.0 [kworker/1:1-mm_percpu_wq]
-     83       2 14:17:17  19   0  0.0  0.0 [kworker/2:1-events]
-     84       2 14:17:17  39 -20  0.0  0.0 [kworker/R-tpm_dev_wq]
-     85       2 14:17:17  39 -20  0.0  0.0 [kworker/R-ata_sff]
-     86       2 14:17:17  39 -20  0.0  0.0 [kworker/R-edac-poller]
-     87       2 14:17:17  39 -20  0.0  0.0 [kworker/R-devfreq_wq]
-     88       2 14:17:17  90   -  0.0  0.0 [watchdogd]
-     89       2 14:17:17  19   0  0.0  0.0 [kworker/6:1-mm_percpu_wq]
-     90       2 14:17:17  39 -20  0.0  0.0 [kworker/6:1H-kblockd]
-     91       2 14:17:17  90   -  0.0  0.0 [irq/25-AMD-Vi]
-     92       2 14:17:17  19   0  0.0  0.0 [kswapd0]
-     93       2 14:17:17  39 -20  0.0  0.0 [kworker/R-kthrotld]
-     94       2 14:17:17  90   -  0.0  0.0 [irq/26-aerdrv]
-     95       2 14:17:17  90   -  0.0  0.0 [irq/27-aerdrv]
-     96       2 14:17:17  90   -  0.0  0.0 [irq/28-aerdrv]
-     97       2 14:17:17  90   -  0.0  0.0 [irq/29-aerdrv]
-     98       2 14:17:17  39 -20  0.0  0.0 [kworker/R-acpi_thermal_pm]
-     99       2 14:17:17  19   0  0.0  0.0 [kworker/u32:3-dm_vblank_control_workqueue]
-    100       2 14:17:18  39 -20  0.0  0.0 [kworker/R-mld]
-    101       2 14:17:18  39 -20  0.0  0.0 [kworker/R-ipv6_addrconf]
-    103       2 14:17:18  39 -20  0.0  0.0 [kworker/4:1H-kblockd]
-    109       2 14:17:18  39 -20  0.0  0.0 [kworker/R-kstrp]
-    110       2 14:17:18  19   0  0.0  0.0 [kworker/3:1-events]
-    111       2 14:17:18  19   0  0.0  0.0 [kworker/5:1-events]
-    116       2 14:17:18  39 -20  0.0  0.0 [kworker/0:1H-kblockd]
-    146       2 14:17:18  39 -20  0.0  0.0 [kworker/2:1H-kblockd]
-    164       2 14:17:18  19   0  0.0  0.0 [kworker/7:1-pm]
-    165       2 14:17:18  39 -20  0.0  0.0 [kworker/1:1H-kblockd]
-    175       2 14:17:18  19   0  0.0  0.0 [kworker/4:2-cgroup_destroy]
-    190       2 14:17:18  39 -20  0.0  0.0 [kworker/R-nvme-wq]
-    191       2 14:17:18  39 -20  0.0  0.0 [kworker/R-nvme-reset-wq]
-    192       2 14:17:18  39 -20  0.0  0.0 [kworker/R-nvme-delete-wq]
-    193       2 14:17:18  39 -20  0.0  0.0 [kworker/R-nvme-auth-wq]
-    195       2 14:17:18  39 -20  0.0  0.0 [kworker/5:1H-kblockd]
-    196       2 14:17:18  39 -20  0.0  0.0 [kworker/3:1H-kblockd]
-    198       2 14:17:18  19   0  0.0  0.0 [kworker/1:2-cgroup_destroy]
-    200       2 14:17:18  39 -20  0.0  0.0 [kworker/7:1H-kblockd]
-    201       2 14:17:23  39 -20  0.0  0.0 [kworker/R-amdgpu-reset-dev]
-    202       2 14:17:23  39 -20  0.0  0.0 [kworker/R-ttm]
-    203       2 14:17:23  39 -20  0.0  0.0 [kworker/R-amdgpu_dm_hpd_rx_offload_wq]
-    204       2 14:17:23  39 -20  0.0  0.0 [kworker/R-dm_vblank_control_workqueue]
-    205       2 14:17:23  90   -  0.0  0.0 [card1-crtc0]
-    206       2 14:17:23  90   -  0.0  0.0 [card1-crtc1]
-    207       2 14:17:23  90   -  0.0  0.0 [card1-crtc2]
-    208       2 14:17:23  90   -  0.0  0.0 [card1-crtc3]
-    253       2 14:17:24  19   0  0.0  0.0 [kworker/0:2-cgroup_destroy]
-  *  256       2 14:17:24  19   0  0.0  0.0 [jbd2/nvme0n1p2-8]
-    257       2 14:17:24  39 -20  0.0  0.0 [kworker/R-ext4-rsv-conversion]
-    268       2 14:17:24  19   0  0.0  0.0 [kworker/5:2-mm_percpu_wq]
-    276       2 14:17:24  19   0  0.0  0.0 [kworker/6:7-events]
-    312       1 14:17:24  19   0  0.1  0.0 /usr/lib/systemd/systemd-journald
-    325       1 14:17:24  19   0  0.0  0.0 /usr/lib/systemd/systemd-userdbd
-    329       2 14:17:24  41   -  0.0  0.0 [psimon]
-    355       1 14:17:25  19   0  0.0  0.0 /usr/lib/systemd/systemd-udevd
-    357       2 14:17:25  41   -  0.0  0.0 [psimon]
-    398       2 14:17:25  39 -20  0.0  0.0 [kworker/R-asus_wireless_workqueue]
-    400       2 14:17:25  90   -  0.0  0.0 [irq/59-ELAN1200:00]
-    466       2 14:17:25  19   0  0.0  0.0 [jbd2/nvme0n1p3-8]
-    467       2 14:17:25  39 -20  0.0  0.0 [kworker/R-ext4-rsv-conversion]
-    469       2 14:17:26  39 -20  0.0  0.0 [kworker/R-cryptd]
-    470       2 14:17:26  19   0  0.0  0.0 [nv_queue]
-    471       2 14:17:26  19   0  0.0  0.0 [ccp-1-q2]
-    472       2 14:17:26  19   0  0.0  0.0 [nv_queue]
-    473       2 14:17:26  19   0  0.0  0.0 [ccp-1-q3]
-    474       2 14:17:26  19   0  0.0  0.0 [ccp-1-q4]
-    475       2 14:17:26  19   0  0.0  0.0 [hwrng]
-    476       2 14:17:26  19   0  0.0  0.0 [nv_open_q]
-    504       1 14:17:26  19   0  0.0  0.0 /usr/lib/systemd/systemd-timesyncd
-    505       2 14:17:26  19   0  0.0  0.0 [nvidia-modeset/kthread_q]
-    506       2 14:17:26  19   0  0.0  0.0 [nvidia-modeset/deferred_close_kthread_q]
-    507       2 14:17:26  19   0  0.0  0.0 [UVM global queue]
-    508       2 14:17:26  19   0  0.0  0.0 [UVM deferred release queue]
-    509       2 14:17:26  39 -20  0.0  0.0 [kworker/R-cfg80211]
-    510       2 14:17:26  19   0  0.0  0.0 [UVM Tools Event Queue]
-    512       2 14:17:26  90   -  0.0  0.0 [irq/66-nvidia]
-    513       2 14:17:26  19   0  0.0  0.0 [nvidia]
-    514       2 14:17:26  19   0  0.0  0.0 [nv_queue]
-    518       2 14:17:26  39 -20  0.0  0.0 [kworker/R-iprt-VBoxWQueue]
-    521       2 14:17:26  19   0  0.0  0.0 [iprt-VBoxTscThread]
-    531       2 14:17:26  39 -20  0.0  0.0 [kworker/R-led_workqueue]
-    541       1 14:17:27  19   0  0.0  0.0 /usr/bin/dbus-broker-launch --scope system --audit
-    546       2 14:17:27  90   -  0.0  0.0 [irq/70-rtw88_pci]
-    551     541 14:17:27  19   0  0.0  0.0 dbus-broker --log 4 --controller 9 --machine-id dbf85b8b9b854857800e0fed5738bba0 --max-bytes 536870912 --max-fds 4096 --max-matches 131072 --audit
-    553       1 14:17:27  19   0  0.1  0.0 /usr/bin/NetworkManager --no-daemon
-    554       1 14:17:27  19   0  0.0  0.0 /usr/lib/systemd/systemd-logind
-    588       1 14:17:28  19   0  0.0  0.1 /usr/bin/wpa_supplicant -u -s -O /run/wpa_supplicant
-    591       1 14:17:28  19   0  0.1  0.0 /usr/bin/sddm
-    593     591 14:17:28  19   0  0.8  0.5 /usr/lib/Xorg -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_oFjXhu -noreset -displayfd 16
-    611       2 14:17:30  41   -  0.0  0.0 [psimon]
-    646     591 14:17:36  19   0  0.1  0.0 /usr/lib/sddm/sddm-helper --socket /tmp/sddm-auth-73cde982-a9c3-4f7b-9717-7a4fb54694e8 --id 1 --start qtile start --user licho
-    662       2 14:17:36  39 -20  0.0  0.0 [kworker/u33:13-ttm]
-    663       2 14:17:36  39 -20  0.0  0.0 [kworker/u33:14-ttm]
-    667       1 14:17:36  19   0  0.0  0.0 /usr/lib/systemd/systemd --user
-    670     667 14:17:36  19   0  0.0  0.0 (sd-pam)
-    677     667 14:17:36  19   0  0.0  0.0 /usr/bin/pipewire
-    678     667 14:17:36  19   0  0.1  0.0 /usr/bin/wireplumber
-    679     667 14:17:36  19   0  0.0  0.0 /usr/bin/pipewire-pulse
-    680     646 14:17:36  19   0  0.4  0.7 /usr/bin/python /usr/bin/qtile start
-    688     667 14:17:36  19   0  0.0  0.0 /usr/bin/dbus-broker-launch --scope user
-    690     688 14:17:36  19   0  0.0  0.0 dbus-broker --log 4 --controller 10 --machine-id dbf85b8b9b854857800e0fed5738bba0 --max-bytes 100000000000000 --max-fds 25000000000000 --max-matches 5000000000
-    746       1 14:17:38  19   0  0.0  0.0 /bin/bash .config/qtile/autostart_once.sh
-    756     746 14:17:38  19   0  0.4  0.2 picom --config /home/licho/.config/picom/picom.conf
-    808       1 14:17:44  19   0  0.6  0.5 alacritty
-    828     808 14:17:44  19   0  0.0  0.0 /usr/bin/zsh
-   2336       2 14:22:30  19   0  0.0  0.0 [kworker/u32:5-sdma0]
-   3248       2 14:25:38  39 -20  0.0  0.0 [kworker/u33:0-ttm]
-   5505       2 14:32:23  19   0  0.0  0.0 [kworker/u32:0-gfx]
-   5558       2 14:32:34  19   0  0.0  0.0 [kworker/6:0]
-   5559       2 14:32:34  19   0  0.0  0.0 [kworker/1:0]
-   5734     325 14:33:00  19   0  0.0  0.0 systemd-userwork: waiting...
-   5735     325 14:33:00  19   0  0.0  0.0 systemd-userwork: waiting...
-   5736     325 14:33:00  19   0  0.0  0.0 systemd-userwork: waiting...
-   6192     828 14:34:25  19   0  0.0  0.0 ps -eo pid,ppid,start,pri,ni,%mem,%cpu,cmd
 
+```man
+PS(1)                                                                                                                        User Commands                                                                                                                       PS(1)
+
+NAME
+       ps - report a snapshot of the current processes.
+
+SYNOPSIS
+       ps [options]
+...
+```
+
+# Checking process information 
+
+## Command  
 ```zhs
+ps -eo pid,ppid,stat,pri,nice,%mem,%cpu,tty,cmd
+```
+-e: It will show all processes.
+-o: Specifies the columns to display, such as: 
+   - pid (Process ID): The unique identifier of the process.
+   - ppid (Parent Process ID): The ID of the parent process.
+   - stat (Status): The current state of the process (e.g., running, sleeping).
+   - pri (Priority): The scheduling priority of the process.
+   - nice (Niceness): The nice value, affecting process priority.
+   - %mem (Memory Usage): The percentage of physical memory used by the process.
+   - %cpu (CPU Usage): The percentage of CPU time used by the process.
+   - tty (Terminal Type): The terminal associated with the process.
+   - cmd (Command): The command that started the process.
+
+### Output:
+```
+ID    PPID STAT PRI  NI %MEM %CPU TT       CMD
+      1       0 Ss    19   0  0.0  0.0 ?        /sbin/init
+      2       0 S     19   0  0.0  0.0 ?        [kthreadd]
+      3       2 S     19   0  0.0  0.0 ?        [pool_workqueue_release]
+      4       2 I<    39 -20  0.0  0.0 ?        [kworker/R-rcu_gp]
+      5       2 I<    39 -20  0.0  0.0 ?        [kworker/R-sync_wq]
+      6       2 I<    39 -20  0.0  0.0 ?        [kworker/R-slub_flushwq]
+      7       2 I<    39 -20  0.0  0.0 ?        [kworker/R-netns]
+      8       2 I     19   0  0.0  0.0 ?        [kworker/0:0-mm_percpu_wq]
+...
+```
+
+## Command 
+```zhs 
 ps axjf
 ```
+operands:
+   a (All Users): Selects all processes with a terminal (TTY) attached, including those belonging to other users. This operand helps display processes beyond just those initiated by the current user.
+   x (Without a TTY): Includes processes that do not have a controlling terminal. This is useful for viewing background or daemon processes that run without user interaction.
+   j (Jobs Format): Displays processes in the jobs format, which includes additional columns such as session ID and PGID (process group ID). This provides more context about the job control and process hierarchy.
+   f (Forest View): Shows processes in a hierarchical tree structure, making it easier to see the parent-child relationships between processes. This visual representation helps identify which processes are related and how they are organized.
 
-   PPID     PID    PGID     SID TTY        TPGID STAT   UID   TIME COMMAND
+### Output 
+```
+PPID     PID    PGID     SID TTY        TPGID STAT   UID   TIME COMMAND
       0       2       0       0 ?             -1 S        0   0:00 [kthreadd]
       2       3       0       0 ?             -1 S        0   0:00  \_ [pool_workqueue_release]
       2       4       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-rcu_gp]
       2       5       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-sync_wq]
       2       6       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-slub_flushwq]
       2       7       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-netns]
-      2       8       0       0 ?             -1 I        0   0:00  \_ [kworker/0:0-mm_percpu_wq]
+      2       8       0       0 ?             -1 I        0   0:00  \_ [kworker/0:0-events]
+      2       9       0       0 ?             -1 I        0   0:00  \_ [kworker/0:1-events]
       2      10       0       0 ?             -1 I<       0   0:00  \_ [kworker/0:0H-events_highpri]
       2      13       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-mm_percpu_wq]
-      2      14       0       0 ?             -1 I        0   0:00  \_ [rcu_tasks_kthread]
-      2      15       0       0 ?             -1 I        0   0:00  \_ [rcu_tasks_rude_kthread]
-      2      16       0       0 ?             -1 I        0   0:00  \_ [rcu_tasks_trace_kthread]
-      2      17       0       0 ?             -1 S        0   0:00  \_ [ksoftirqd/0]
-      2      18       0       0 ?             -1 I        0   0:00  \_ [rcu_preempt]
-      2      19       0       0 ?             -1 S        0   0:00  \_ [rcub/0]
-      2      20       0       0 ?             -1 S        0   0:00  \_ [rcu_exp_par_gp_kthread_worker/0]
-      2      21       0       0 ?             -1 S        0   0:00  \_ [rcu_exp_gp_kthread_worker]
-      2      22       0       0 ?             -1 S        0   0:00  \_ [migration/0]
-      2      23       0       0 ?             -1 S        0   0:00  \_ [idle_inject/0]
-      2      24       0       0 ?             -1 S        0   0:00  \_ [cpuhp/0]
-      2      25       0       0 ?             -1 S        0   0:00  \_ [cpuhp/2]
-      2      26       0       0 ?             -1 S        0   0:00  \_ [idle_inject/2]
-      2      27       0       0 ?             -1 S        0   0:00  \_ [migration/2]
-      2      28       0       0 ?             -1 S        0   0:00  \_ [ksoftirqd/2]
-      2      29       0       0 ?             -1 I        0   0:00  \_ [kworker/2:0-mm_percpu_wq]
-      2      30       0       0 ?             -1 I<       0   0:00  \_ [kworker/2:0H-events_highpri]
-      2      31       0       0 ?             -1 S        0   0:00  \_ [cpuhp/4]
-      2      32       0       0 ?             -1 S        0   0:00  \_ [idle_inject/4]
-      2      33       0       0 ?             -1 S        0   0:00  \_ [migration/4]
-      2      34       0       0 ?             -1 S        0   0:00  \_ [ksoftirqd/4]
-      2      36       0       0 ?             -1 I<       0   0:00  \_ [kworker/4:0H-events_highpri]
-      2      37       0       0 ?             -1 S        0   0:00  \_ [cpuhp/6]
-      2      38       0       0 ?             -1 S        0   0:00  \_ [idle_inject/6]
-      2      39       0       0 ?             -1 S        0   0:00  \_ [migration/6]
-      2      40       0       0 ?             -1 S        0   0:00  \_ [ksoftirqd/6]
-      2      42       0       0 ?             -1 I<       0   0:00  \_ [kworker/6:0H-events_highpri]
-      2      43       0       0 ?             -1 S        0   0:00  \_ [cpuhp/1]
-      2      44       0       0 ?             -1 S        0   0:00  \_ [idle_inject/1]
-      2      45       0       0 ?             -1 S        0   0:00  \_ [migration/1]
-      2      46       0       0 ?             -1 S        0   0:00  \_ [ksoftirqd/1]
-      2      48       0       0 ?             -1 I<       0   0:00  \_ [kworker/1:0H-events_highpri]
-      2      49       0       0 ?             -1 S        0   0:00  \_ [cpuhp/3]
-      2      50       0       0 ?             -1 S        0   0:00  \_ [idle_inject/3]
-      2      51       0       0 ?             -1 S        0   0:00  \_ [migration/3]
-      2      52       0       0 ?             -1 S        0   0:00  \_ [ksoftirqd/3]
-      2      53       0       0 ?             -1 I        0   0:00  \_ [kworker/3:0-events]
-      2      54       0       0 ?             -1 I<       0   0:00  \_ [kworker/3:0H-events_highpri]
-      2      55       0       0 ?             -1 S        0   0:00  \_ [cpuhp/5]
-      2      56       0       0 ?             -1 S        0   0:00  \_ [idle_inject/5]
-      2      57       0       0 ?             -1 S        0   0:00  \_ [migration/5]
-      2      58       0       0 ?             -1 S        0   0:00  \_ [ksoftirqd/5]
-      2      60       0       0 ?             -1 I<       0   0:00  \_ [kworker/5:0H-events_highpri]
-      2      61       0       0 ?             -1 S        0   0:00  \_ [cpuhp/7]
-      2      62       0       0 ?             -1 S        0   0:00  \_ [idle_inject/7]
-      2      63       0       0 ?             -1 S        0   0:00  \_ [migration/7]
-      2      64       0       0 ?             -1 S        0   0:00  \_ [ksoftirqd/7]
-      2      65       0       0 ?             -1 I        0   0:00  \_ [kworker/7:0-mm_percpu_wq]
-      2      66       0       0 ?             -1 I<       0   0:00  \_ [kworker/7:0H-events_highpri]
-      2      67       0       0 ?             -1 S        0   0:00  \_ [kdevtmpfs]
-      2      68       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-inet_frag_wq]
-      2      69       0       0 ?             -1 S        0   0:00  \_ [kauditd]
-      2      70       0       0 ?             -1 S        0   0:00  \_ [khungtaskd]
-      2      72       0       0 ?             -1 S        0   0:00  \_ [oom_reaper]
-      2      73       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-writeback]
-      2      74       0       0 ?             -1 S        0   0:00  \_ [kcompactd0]
-      2      75       0       0 ?             -1 SN       0   0:00  \_ [ksmd]
-      2      76       0       0 ?             -1 SN       0   0:00  \_ [khugepaged]
-      2      77       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-kintegrityd]
-      2      78       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-kblockd]
-      2      79       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-blkcg_punt_bio]
-      2      80       0       0 ?             -1 S        0   0:00  \_ [irq/9-acpi]
-      2      81       0       0 ?             -1 I        0   0:00  \_ [kworker/4:1-mm_percpu_wq]
-      2      82       0       0 ?             -1 I        0   0:00  \_ [kworker/1:1-mm_percpu_wq]
-      2      83       0       0 ?             -1 I        0   0:00  \_ [kworker/2:1-events]
-      2      84       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-tpm_dev_wq]
-      2      85       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-ata_sff]
-      2      86       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-edac-poller]
-      2      87       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-devfreq_wq]
-      2      88       0       0 ?             -1 S        0   0:00  \_ [watchdogd]
-      2      89       0       0 ?             -1 I        0   0:00  \_ [kworker/6:1-mm_percpu_wq]
-      2      90       0       0 ?             -1 I<       0   0:00  \_ [kworker/6:1H-kblockd]
-      2      91       0       0 ?             -1 S        0   0:00  \_ [irq/25-AMD-Vi]
-      2      92       0       0 ?             -1 S        0   0:00  \_ [kswapd0]
-      2      93       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-kthrotld]
-      2      94       0       0 ?             -1 S        0   0:00  \_ [irq/26-aerdrv]
-      2      95       0       0 ?             -1 S        0   0:00  \_ [irq/27-aerdrv]
-      2      96       0       0 ?             -1 S        0   0:00  \_ [irq/28-aerdrv]
-      2      97       0       0 ?             -1 S        0   0:00  \_ [irq/29-aerdrv]
-      2      98       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-acpi_thermal_pm]
-      2     100       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-mld]
-      2     101       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-ipv6_addrconf]
-      2     103       0       0 ?             -1 I<       0   0:00  \_ [kworker/4:1H-kblockd]
-      2     109       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-kstrp]
-      2     110       0       0 ?             -1 I        0   0:00  \_ [kworker/3:1-events]
-      2     111       0       0 ?             -1 I        0   0:00  \_ [kworker/5:1-events]
-      2     116       0       0 ?             -1 I<       0   0:00  \_ [kworker/0:1H-kblockd]
-      2     146       0       0 ?             -1 I<       0   0:00  \_ [kworker/2:1H-kblockd]
-      2     164       0       0 ?             -1 I        0   0:00  \_ [kworker/7:1-pm]
-      2     165       0       0 ?             -1 I<       0   0:00  \_ [kworker/1:1H-kblockd]
-      2     175       0       0 ?             -1 I        0   0:00  \_ [kworker/4:2-cgroup_destroy]
-      2     190       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-nvme-wq]
-      2     191       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-nvme-reset-wq]
-      2     192       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-nvme-delete-wq]
-      2     193       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-nvme-auth-wq]
-      2     195       0       0 ?             -1 I<       0   0:00  \_ [kworker/5:1H-kblockd]
-      2     196       0       0 ?             -1 I<       0   0:00  \_ [kworker/3:1H-kblockd]
-      2     200       0       0 ?             -1 I<       0   0:00  \_ [kworker/7:1H-kblockd]
-      2     201       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-amdgpu-reset-dev]
-      2     202       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-ttm]
-      2     203       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-amdgpu_dm_hpd_rx_offload_wq]
-      2     204       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-dm_vblank_control_workqueue]
-      2     205       0       0 ?             -1 S        0   0:00  \_ [card1-crtc0]
-      2     206       0       0 ?             -1 S        0   0:00  \_ [card1-crtc1]
-      2     207       0       0 ?             -1 S        0   0:00  \_ [card1-crtc2]
-      2     208       0       0 ?             -1 S        0   0:00  \_ [card1-crtc3]
-      2     253       0       0 ?             -1 I        0   0:00  \_ [kworker/0:2-cgroup_destroy]
-      2     256       0       0 ?             -1 S        0   0:00  \_ [jbd2/nvme0n1p2-8]
-      2     257       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-ext4-rsv-conversion]
-      2     268       0       0 ?             -1 I        0   0:00  \_ [kworker/5:2-mm_percpu_wq]
-      2     329       0       0 ?             -1 S        0   0:00  \_ [psimon]
-      2     357       0       0 ?             -1 S        0   0:00  \_ [psimon]
-      2     398       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-asus_wireless_workqueue]
-      2     400       0       0 ?             -1 S        0   0:00  \_ [irq/59-ELAN1200:00]
-      2     466       0       0 ?             -1 S        0   0:00  \_ [jbd2/nvme0n1p3-8]
-      2     467       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-ext4-rsv-conversion]
-      2     469       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-cryptd]
-      2     470       0       0 ?             -1 S        0   0:00  \_ [nv_queue]
-      2     471       0       0 ?             -1 S        0   0:00  \_ [ccp-1-q2]
-      2     472       0       0 ?             -1 S        0   0:00  \_ [nv_queue]
-      2     473       0       0 ?             -1 S        0   0:00  \_ [ccp-1-q3]
-      2     474       0       0 ?             -1 S        0   0:00  \_ [ccp-1-q4]
-      2     475       0       0 ?             -1 S        0   0:00  \_ [hwrng]
-      2     476       0       0 ?             -1 S        0   0:00  \_ [nv_open_q]
-      2     505       0       0 ?             -1 S        0   0:00  \_ [nvidia-modeset/kthread_q]
-      2     506       0       0 ?             -1 S        0   0:00  \_ [nvidia-modeset/deferred_close_kthread_q]
-      2     507       0       0 ?             -1 S        0   0:00  \_ [UVM global queue]
-      2     508       0       0 ?             -1 S        0   0:00  \_ [UVM deferred release queue]
-      2     509       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-cfg80211]
-      2     510       0       0 ?             -1 S        0   0:00  \_ [UVM Tools Event Queue]
-      2     512       0       0 ?             -1 S        0   0:00  \_ [irq/66-nvidia]
-      2     513       0       0 ?             -1 S        0   0:00  \_ [nvidia]
-      2     514       0       0 ?             -1 S        0   0:00  \_ [nv_queue]
-      2     518       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-iprt-VBoxWQueue]
-      2     521       0       0 ?             -1 S        0   0:00  \_ [iprt-VBoxTscThread]
-      2     531       0       0 ?             -1 I<       0   0:00  \_ [kworker/R-led_workqueue]
-      2     546       0       0 ?             -1 S        0   0:00  \_ [irq/70-rtw88_pci]
-      2     611       0       0 ?             -1 S        0   0:00  \_ [psimon]
-      2     663       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:14-ttm]
-      2    2336       0       0 ?             -1 I        0   0:00  \_ [kworker/u32:5-events_power_efficient]
-      2    3248       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:0-ttm]
-      2    5505       0       0 ?             -1 I        0   0:00  \_ [kworker/u32:0-gfx]
-      2    5558       0       0 ?             -1 I        0   0:00  \_ [kworker/6:0]
-      2    5559       0       0 ?             -1 I        0   0:00  \_ [kworker/1:0-cgroup_destroy]
-      2    7162       0       0 ?             -1 I        0   0:00  \_ [kworker/u32:1-events_unbound]
-      2    8665       0       0 ?             -1 I        0   0:00  \_ [kworker/1:2]
-      2    8686       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:1-ttm]
-      2    8687       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:2-ttm]
-      2    9729       0       0 ?             -1 I        0   0:00  \_ [kworker/u32:2-sdma0]
-      2    9828       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:3-ttm]
-      2    9829       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:4-ttm]
-      2    9830       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:5-ttm]
-      2    9831       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:6-ttm]
-      2    9832       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:7-ttm]
-      2    9833       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:8-ttm]
-      2    9834       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:9-ttm]
-      2    9835       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:10-ttm]
-      2   10042       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:11-ttm]
-      2   10043       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:12-ttm]
-      2   10044       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:13-ttm]
-      2   10045       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:15-ttm]
-      2   10046       0       0 ?             -1 I<       0   0:00  \_ [kworker/u33:16]
-      0       1       1       1 ?             -1 Ss       0   0:01 /sbin/init
-      1     312     312     312 ?             -1 Ss       0   0:00 /usr/lib/systemd/systemd-journald
-      1     325     325     325 ?             -1 Ss       0   0:00 /usr/lib/systemd/systemd-userdbd
-    325    8868     325     325 ?             -1 S        0   0:00  \_ systemd-userwork: waiting...
-    325    8869     325     325 ?             -1 S        0   0:00  \_ systemd-userwork: waiting...
-    325    8870     325     325 ?             -1 S        0   0:00  \_ systemd-userwork: waiting...
-      1     355     355     355 ?             -1 Ss       0   0:00 /usr/lib/systemd/systemd-udevd
-      1     504     504     504 ?             -1 Ssl    975   0:00 /usr/lib/systemd/systemd-timesyncd
-      1     541     541     541 ?             -1 Ss      81   0:00 /usr/bin/dbus-broker-launch --scope system --audit
-    541     551     541     541 ?             -1 S       81   0:00  \_ dbus-broker --log 4 --controller 9 --machine-id dbf85b8b9b854857800e0fed5738bba0 --max-bytes 536870912 --max-fds 4096 --max-matches 131072 --audit
-      1     553     553     553 ?             -1 Ssl      0   0:00 /usr/bin/NetworkManager --no-daemon
-      1     554     554     554 ?             -1 Ss       0   0:00 /usr/lib/systemd/systemd-logind
-      1     588     588     588 ?             -1 Ss       0   0:01 /usr/bin/wpa_supplicant -u -s -O /run/wpa_supplicant
-      1     591     591     591 ?             -1 Ssl      0   0:00 /usr/bin/sddm
-    591     593     593     593 tty2         593 Rsl+     0   0:08  \_ /usr/lib/Xorg -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_oFjXhu -noreset -displayfd 16
-    591     646     591     591 ?             -1 S        0   0:00  \_ /usr/lib/sddm/sddm-helper --socket /tmp/sddm-auth-73cde982-a9c3-4f7b-9717-7a4fb54694e8 --id 1 --start qtile start --user licho
-    646     680     591     591 ?             -1 Rl    1000   0:12      \_ /usr/bin/python /usr/bin/qtile start
-      1     667     667     667 ?             -1 Ss    1000   0:00 /usr/lib/systemd/systemd --user
-    667     670     667     667 ?             -1 S     1000   0:00  \_ (sd-pam)
-    667     677     677     677 ?             -1 Ssl   1000   0:00  \_ /usr/bin/pipewire
-    667     678     678     678 ?             -1 Ssl   1000   0:00  \_ /usr/bin/wireplumber
-    667     679     679     679 ?             -1 Ssl   1000   0:00  \_ /usr/bin/pipewire-pulse
-    667     688     688     688 ?             -1 Ss    1000   0:00  \_ /usr/bin/dbus-broker-launch --scope user
-    688     690     688     688 ?             -1 S     1000   0:00      \_ dbus-broker --log 4 --controller 10 --machine-id dbf85b8b9b854857800e0fed5738bba0 --max-bytes 100000000000000 --max-fds 25000000000000 --max-matches 5000000000
-      1     746     591     591 ?             -1 S     1000   0:00 /bin/bash .config/qtile/autostart_once.sh
-    746     756     591     591 ?             -1 Rl    1000   0:03  \_ picom --config /home/licho/.config/picom/picom.conf
-      1   10052     591     591 ?             -1 Sl    1000   0:00 alacritty
-  10052   10071   10071   10071 pts/0      10520 Ss    1000   0:00  \_ /usr/bin/zsh
-  10071   10520   10520   10071 pts/0      10520 R+    1000   0:00      \_ ps axjf
+...
+```

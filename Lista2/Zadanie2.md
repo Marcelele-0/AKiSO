@@ -51,10 +51,10 @@ ID    PPID STAT PRI  NI %MEM %CPU TT       CMD
 ps axjf
 ```
 operands:
-   a (All Users): Selects all processes with a terminal (TTY) attached, including those belonging to other users. This operand helps display processes beyond just those initiated by the current user.
-   x (Without a TTY): Includes processes that do not have a controlling terminal. This is useful for viewing background or daemon processes that run without user interaction.
-   j (Jobs Format): Displays processes in the jobs format, which includes additional columns such as session ID and PGID (process group ID). This provides more context about the job control and process hierarchy.
-   f (Forest View): Shows processes in a hierarchical tree structure, making it easier to see the parent-child relationships between processes. This visual representation helps identify which processes are related and how they are organized.
+  - a (All Users): Selects all processes with a terminal (TTY) attached, including those belonging to other users. This operand helps display processes beyond just those initiated by the current user.
+  - x (Without a TTY): Includes processes that do not have a controlling terminal. This is useful for viewing background or daemon processes that run without user interaction.
+  - j (Jobs Format): Displays processes in the jobs format, which includes additional columns such as session ID and PGID (process group ID). This provides more context about the job control and process hierarchy.
+  - f (Forest View): Shows processes in a hierarchical tree structure, making it easier to see the parent-child relationships between processes. This visual representation helps identify which processes are related and how they are organized.
 
 ### Output 
 ```

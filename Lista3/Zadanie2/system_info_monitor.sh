@@ -22,11 +22,9 @@ draw_bar() {
     local bar_length=50  # Długość wykresu
     local bar="#"
 
-    # Obliczenie proporcji dla wykresu
     local scale=$(echo "scale=2; $value / $max_value" | bc)
     local num_hashes=$(echo "$scale * $bar_length" | bc | awk '{print int($1)}')
 
-    # Rysowanie wykresu
     for ((i = 0; i < $num_hashes; i++)); do
         echo -n "$bar"
     done
@@ -39,41 +37,73 @@ tx_prev=0
 rx_total=0
 tx_total=0
 count=0
-skip_initial=3  # Liczba początkowych pomiarów do pominięcia
+skip_initial=3
+max_speed=10000000
 
-max_speed=10000000  # Zmienna max_speed do rysowania wykresów (maksymalna prędkość w B/s)
+############################################### GENERAL INFO ###############################################
+# Funkcja do wyświetlania czasu działania systemu
+get_uptime() {
+    local uptime=$(cat /proc/uptime | awk '{print $1}')
+    local days=$((uptime / 86400))
+    local hours=$(( (uptime % 86400) / 3600 ))
+    local minutes=$(( (uptime % 3600) / 60 ))
+    local seconds=$((uptime % 60))
+    echo "System uptime: ${days}d ${hours}h ${minutes}m ${seconds}s"
+}
 
+# Funkcja do wyświetlania stanu baterii
+get_battery_status() {
+    if [ -f "/sys/class/power_supply/BAT0/uevent" ]; then
+        local battery_percent=$(grep "POWER_SUPPLY_CAPACITY=" /sys/class/power_supply/BAT0/uevent | cut -d= -f2)
+        echo "Battery status: ${battery_percent}%"
+    else
+        echo "Battery status: N/A"
+    fi
+}
+
+# Funkcja do wyświetlania obciążenia systemu
+get_load_avg() {
+    local load_avg=$(cat /proc/loadavg | awk '{print $1, $2, $3}')
+    echo "System load average (1, 5, 15 min): $load_avg"
+}
+
+# Funkcja do wyświetlania aktualnego wykorzystania pamięci
+get_memory_usage() {
+    local mem_total=$(grep "MemTotal" /proc/meminfo | awk '{print $2}')
+    local mem_free=$(grep "MemFree" /proc/meminfo | awk '{print $2}')
+    local mem_available=$(grep "MemAvailable" /proc/meminfo | awk '{print $2}')
+    
+    echo "Memory usage:"
+    echo "  Total memory: $(convert_size ${mem_total}000)"
+    echo "  Free memory: $(convert_size ${mem_free}000)"
+    echo "  Available memory: $(convert_size ${mem_available}000)"
+}
 
 ########################################################## CPU ########################################################
-
-
-# Funkcja do pobierania użycia CPU
 get_cpu_usage() {
+    # Funkcja do pobierania użycia CPU
     local cpu=$1
     local stat_file="/proc/stat"
     local prev_idle prev_total curr_idle curr_total
 
-    # Wczytanie statystyk CPU
     read -r _ user nice system idle iowait irq softirq steal guest < <(awk "NR==$((cpu+1))" $stat_file)
 
     curr_idle=$((idle + iowait))
     curr_total=$((user + nice + system + idle + iowait + irq + softirq + steal))
 
     if [[ -n "$prev_idle" && -n "$prev_total" ]]; then
-        # Obliczanie różnicy w czasie między kolejnymi pomiarami
         idle_diff=$((curr_idle - prev_idle))
         total_diff=$((curr_total - prev_total))
         usage=$((100 * (total_diff - idle_diff) / total_diff))
         echo $usage
     fi
 
-    # Aktualizacja poprzednich wartości
     prev_idle=$curr_idle
     prev_total=$curr_total
 }
 
-# Funkcja do pobierania częstotliwości CPU
 get_cpu_frequency() {
+    # Funkcja do pobierania częstotliwości CPU
     local cpu=$1
     local freq_file="/sys/devices/system/cpu/cpu${cpu}/cpufreq/scaling_cur_freq"
     
@@ -84,14 +114,18 @@ get_cpu_frequency() {
     fi
 }
 
-###########################################################    ###########################################################
 
 
-
-
-
-# Pętla pomiarów
 while true; do
+    echo "-------------------------------------- General Info --------------------------------------"
+    get_uptime
+    get_battery_status
+    get_load_avg
+    get_memory_usage
+
+        # Wyświetlanie wyników
+    echo "--------------------------------------Wi-fi stats------------------------------------------"
+    
     # Odczyt danych z /proc/net/dev
     net_data=$(cat /proc/net/dev | grep "wlp4s0")
     
@@ -127,8 +161,7 @@ while true; do
     avg_rx_speed=$((rx_total / count))
     avg_tx_speed=$((tx_total / count))
     
-    # Wyświetlanie wyników
-    echo "--------------------------------------Wi-fi stats------------------------------------------"
+
     echo "WiFi - Odbiór: $(convert_size $rx_speed), Wysłanie: $(convert_size $tx_speed)"
     echo -n "Prędkość Odbioru: "
     draw_bar $rx_speed $max_speed

@@ -44,10 +44,13 @@ max_speed=10000000
 # Funkcja do wyświetlania czasu działania systemu
 get_uptime() {
     local uptime=$(cat /proc/uptime | awk '{print $1}')
-    local days=$((uptime / 86400))
-    local hours=$(( (uptime % 86400) / 3600 ))
-    local minutes=$(( (uptime % 3600) / 60 ))
-    local seconds=$((uptime % 60))
+    
+    # Zmiennoprzecinkowe operacje przy pomocy bc
+    local days=$(echo "$uptime / 86400" | bc)
+    local hours=$(echo "($uptime % 86400) / 3600" | bc)
+    local minutes=$(echo "($uptime % 3600) / 60" | bc)
+    local seconds=$(echo "$uptime % 60" | bc)
+    
     echo "System uptime: ${days}d ${hours}h ${minutes}m ${seconds}s"
 }
 
@@ -80,24 +83,31 @@ get_memory_usage() {
 }
 
 ########################################################## CPU ########################################################
+# Funkcja do pobierania użycia CPU
 get_cpu_usage() {
-    # Funkcja do pobierania użycia CPU
     local cpu=$1
     local stat_file="/proc/stat"
     local prev_idle prev_total curr_idle curr_total
 
+    # Wczytanie statystyk CPU
     read -r _ user nice system idle iowait irq softirq steal guest < <(awk "NR==$((cpu+1))" $stat_file)
 
     curr_idle=$((idle + iowait))
     curr_total=$((user + nice + system + idle + iowait + irq + softirq + steal))
 
+    # Sprawdzamy, czy to jest pierwszy pomiar
     if [[ -n "$prev_idle" && -n "$prev_total" ]]; then
+        # Obliczanie różnicy w czasie między kolejnymi pomiarami
         idle_diff=$((curr_idle - prev_idle))
         total_diff=$((curr_total - prev_total))
         usage=$((100 * (total_diff - idle_diff) / total_diff))
         echo $usage
+    else
+        # Jeśli to pierwszy pomiar, nie obliczamy użycia (tylko ustawiamy wartości początkowe)
+        echo "0"
     fi
 
+    # Aktualizacja poprzednich wartości
     prev_idle=$curr_idle
     prev_total=$curr_total
 }
@@ -117,13 +127,15 @@ get_cpu_frequency() {
 
 
 while true; do
+    echo ""
+    echo ""
     echo "-------------------------------------- General Info --------------------------------------"
     get_uptime
     get_battery_status
     get_load_avg
     get_memory_usage
 
-        # Wyświetlanie wyników
+    echo""        # Wyświetlanie wyników
     echo "--------------------------------------Wi-fi stats------------------------------------------"
     
     # Odczyt danych z /proc/net/dev
@@ -176,9 +188,10 @@ while true; do
     rx_prev=$rx_current
     tx_prev=$tx_current
     
-
+    echo ""
     echo "--------------------------------------CPU Stats------------------------------------------"
-    
+
+  
     # Liczba rdzeni
     num_cores=$(nproc)
 

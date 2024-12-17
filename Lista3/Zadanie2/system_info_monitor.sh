@@ -40,7 +40,7 @@ count=0
 skip_initial=3
 max_speed=10000000
 
-############################################### GENERAL INFO ###############################################
+############################################ GENERAL INFO #########################################
 # Funkcja do wyświetlania czasu działania systemu
 get_uptime() {
     local uptime=$(cat /proc/uptime | awk '{print $1}')
@@ -82,7 +82,7 @@ get_memory_usage() {
     echo "  Available memory: $(convert_size ${mem_available}000)"
 }
 
-########################################################## CPU ########################################################
+################################################# CPU #################################################
 # Funkcja do pobierania użycia CPU
 get_cpu_usage() {
     local cpu=$1
@@ -175,13 +175,13 @@ while true; do
     
 
     echo "WiFi - Odbiór: $(convert_size $rx_speed), Wysłanie: $(convert_size $tx_speed)"
-    echo -n "Prędkość Odbioru: "
+    echo -n "Prędkość Odbioru           |"
     draw_bar $rx_speed $max_speed
-    echo -n "Prędkość Wysłania: "
+    echo -n "Prędkość Wysłania          |"
     draw_bar $tx_speed $max_speed
-    echo -n "Średnia prędkość Odbioru: "
+    echo -n "Średnia prędkość Odbioru   |"
     draw_bar $avg_rx_speed $max_speed
-    echo -n "Średnia prędkość Wysłania: "
+    echo -n "Średnia prędkość Wysłania  |"
     draw_bar $avg_tx_speed $max_speed
 
     # Zaktualizowanie wartości dla kolejnego pomiaru
